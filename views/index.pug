@@ -1,0 +1,20 @@
+extends layout
+include world
+
+block content
+    h1= title
+    p Welcome to #[em Crudworld], a chaotic world in which everyone is omnipotent.
+
+    h1 Dynamic content
+
+    if error
+        p Error getting dynamic content.
+    else
+        p Crudworld has the following record counts:
+
+        ul
+            li #[strong Cruddies:] !{data.cruddy_count}
+
+    a(href="/catalog/creator") New Cruddy
+
+    +world(data)

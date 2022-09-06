@@ -1,0 +1,37 @@
+
+
+extends layout
+
+
+
+
+
+block content 
+
+    
+    div.header Create a Cruddy  
+    div#creator
+        
+        form(method='POST' action='')#optionsbox 
+            #colorpicker 
+
+                - var colors = ['aquamarine', 'lightcoral', 'mediumpurple'];
+                for color in colors
+
+                    label(for=color style=`background-color: ${color}`).colorbtn= color
+                    input(type="radio" id=color name='color' value=color required)
+
+            #topselector 
+            #frontselector 
+
+            button(type='submit') Submit
+
+             
+        #cruddisplay 
+            div.crud
+                .crudfoot2
+                .crudfoot1
+                .bod.crudbod1
+                .bod.crudbod2
+                .eye1
+                .eye2

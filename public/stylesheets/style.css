@@ -1,0 +1,165 @@
+.sidebar-nav {
+    margin-top: 20px;
+    padding: 0;
+    list-style: none;
+}
+
+.maincontainer {
+    height: 100vh;
+    width: 100vw;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+
+    background-color: red;
+}
+
+.crudbox {
+    flex-grow: 1;
+    background-color: rgba(255, 0, 0, 0);
+}
+
+.crud {
+    height: 8rem;
+    width: 8rem;
+    background-color: rgba(85, 36, 131, 0);
+
+    position: relative;
+    filter: drop-shadow(0px 0px 2px black);
+}
+
+
+.crud>.crudbod1 {
+    position: absolute;
+
+    top: 10%;
+    left: 0%;
+
+    background-color: white;
+    border-radius: 50% 50% 50% 30%;
+    width: 75%;
+    height: 75%;
+
+    transition: all 0.3s;
+}
+
+
+.crud>.crudbod2 {
+    position: absolute;
+
+    bottom: 15%;
+    left: 0%;
+
+    background-color: white;
+    border-radius: 100% 100% 60% 60%;
+    width: 90%;
+    height: 50%;
+
+    transition: all 0.3s;
+}
+
+
+
+.crud>.crudfoot1 {
+    position: absolute;
+    background-color: rgb(104, 104, 104);
+
+    bottom: 0%;
+    left: 0%;
+
+    border-radius: 70% 150% 10% 35%;
+    width: 60%;
+    height: 25%;
+}
+
+.crud>.crudfoot2 {
+    position: absolute;
+    background-color: rgb(71, 71, 71);
+
+    bottom: 5%;
+    right: 0%;
+
+    border-radius: 70% 150% 10% 35%;
+    width: 60%;
+    height: 30%;
+}
+
+.crud>.eye1 {
+    position: absolute;
+    background-color: rgb(3, 3, 3);
+
+    top: 40%;
+    right: 40%;
+
+    border-radius: 30%;
+    width: 5%;
+    height: 15%;
+    animation: blink 4s infinite;
+}
+
+.crud>.eye2 {
+    position: absolute;
+    background-color: rgb(3, 3, 3);
+
+    top: 40%;
+    right: 55%;
+
+    border-radius: 30%;
+    width: 5%;
+    height: 15%;
+    animation: blink 4s infinite;
+}
+
+@keyframes blink {
+    0% {transform: scaleY(1);}
+    95% {transform: scaleY(1);}
+    97.5% {transform: scaleY(0);}
+    100% {transform: scaleY(1);}
+}
+
+#creator {
+    display: flex;
+
+    background-color: green;
+    width: 100%;
+    height: 100%;
+}
+
+#optionsbox {
+    flex-grow: 1;
+    background-color: plum;
+
+
+}
+
+#cruddisplay {
+    background-color: mediumvioletred;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#cruddisplay>.crud {
+    height: 20rem;
+    width: 20rem;
+
+    margin: 20px;
+}
+
+#colorpicker {
+    display: flex;
+    gap: 10px;
+}
+
+input[type='radio'] {
+    position: fixed;
+    opacity: 0;
+    pointer-events: none;
+}
