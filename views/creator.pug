@@ -1,37 +1,47 @@
-
-
 extends layout
-
-
-
-
 
 block content 
 
-    
-    div.header Create a Cruddy  
+
+    div.header= title 
     div#creator
-        
-        form(method='POST' action='')#optionsbox 
-            #colorpicker 
+
+        form(method='POST' action='')#optionsbox
+            h2 Color
+            #colorpicker.felt
 
                 - var colors = ['aquamarine', 'lightcoral', 'mediumpurple'];
                 for color in colors
 
-                    label(for=color style=`background-color: ${color}`).colorbtn= color
+                    
                     input(type="radio" id=color name='color' value=color required)
+                    label(for=color style=`background-color: ${color}`).colorbtn= color
 
-            #topselector 
-            #frontselector 
+            //- #toppicker 
+            //- #frontpicker 
 
-            button(type='submit') Submit
+            h2 World
+            #worldpicker.felt
+                each world in data.world_list
+                    - var name = world.name
+                    div
+                        
+                        input(type="radio" id=name name='world' value=world required)
+                        label(for=name).worldbtn= name
+            button(type='submit').custom-button 
+                div Submit
 
-             
+
         #cruddisplay 
             div.crud
                 .crudfoot2
                 .crudfoot1
+
+                .crudfelt1
                 .bod.crudbod1
+                .crudfelt2
                 .bod.crudbod2
+                
                 .eye1
                 .eye2
+

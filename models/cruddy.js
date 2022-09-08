@@ -4,7 +4,8 @@ const Schema = mongoose.Schema;
 
 const CruddySchema = new Schema(
     {
-        color: { type: String, required: true }
+        color: { type: String, required: true },
+        world: [{ type: Object, ref: 'World' }]
     }
 );
 

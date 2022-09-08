@@ -1,5 +1,7 @@
 extends layout
-include world
+
+include world_previews
+include all_cruddies
 
 block content
     h1= title
@@ -17,4 +19,6 @@ block content
 
     a(href="/catalog/creator") New Cruddy
 
-    +world(data)
+    +all_cruddies(data)
+
+    +world_previews(data)

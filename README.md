@@ -15,9 +15,29 @@ September 5th, 2022
     "I know" by Girls Rituals is the song of the day. Play that to get a perfect mood for this app. Fuck, maybe I'll embed it.
 
 
+September 6th, 2022
+
+    Made some good progress yesterday, but had a lot of work ahead of me today. Lots and lots to learn in terms of node, express, pug, mongodb and mongoose, but as usual with programming, it does exactly what you tell it to. Once I've got a better grasp on how all this works, it'll really open up some massive possibilities. 
+
+    Already within an hour and a half I've got the ability to add and delete cruddies done, which is techically half of the battle anyway. If this keeps going smoothly, I'll probably add various worlds for cruddies to live in, as I believe several categories is part of the outline TOP gives.
+
+    Trying to just delete cruddies from within worlds, and this is proving to be a right nightmare.
+
+September 7th, 2022
+
+    This project is such a mess, but it is sorta working as intended now, which is sick. Just means that I can easily improve. Also means that I'm learning lots of new stuff if I can get it working but don't have a great idea of how to use it yet.
+
+    Lots of good progress today. Even got some solid styling and animations in.
+
 ---To-Do---
 
 -Ability to add new cruddies
 -Ability to delete cruddies
 -Ability to name cruddies
--
+-Create worlds/add cruddies to specific worlds 
+-random color options in creator
+-idle animations
+-walking animations
+-add hats and front accessories
+-counts for each world population
+-latest cruddies section

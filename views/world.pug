@@ -1,10 +1,36 @@
-mixin world(data)
-    div.crudbox
-        each cruddy in data.cruddy_list
-            div.crud
-                .crudfoot2
-                .crudfoot1
-                .bod.crudbod1(style=`background-color: ${cruddy.color}`)
-                .bod.crudbod2(style=`background-color: ${cruddy.color}`)
-                .eye1
-                .eye2
+extends layout 
+
+block content
+    div#world
+        
+
+        div#sky
+            div= world.name
+
+        div#ground
+            each cruddy in cruddy_list
+
+                if String(JSON.parse(cruddy.world[0])._id) === String(world._id)
+
+                    div.crud.walking
+                        .crudfoot2
+                        .crudfoot1
+
+                        .crudfelt1
+                        .bod.crudbod1(style=`background-color: ${cruddy.color}`)
+                        .crudfelt2
+                        .bod.crudbod2(style=`background-color: ${cruddy.color}`)
+                        .eye1
+                        .eye2
+
+                        form(method='POST' action='').deletebox 
+                            div= JSON.parse(cruddy.world[0]).name
+
+                            label(for=cruddy._id ).colorbtn= cruddy._id
+                            input(type="checkbox" id=cruddy._id name='id' value=cruddy._id required)
+
+
+                            button(type='submit') Delete
+
+            .bush
+            .bush

@@ -1,0 +1,28 @@
+mixin world(data)
+
+
+    div
+        if data.world_list.length > 1
+            each world in data.world_list 
+                
+
+                div= world.name
+                each cruddy in data.cruddy_list
+
+                    if String(JSON.parse(cruddy.world[0])._id) === String(world._id)
+
+                        div.crud
+                            .crudfoot2
+                            .crudfoot1
+                            .bod.crudbod1(style=`background-color: ${cruddy.color}`)
+                            .bod.crudbod2(style=`background-color: ${cruddy.color}`)
+                            .eye1
+                            .eye2
+
+                            form(method='POST' action='').deletebox 
+
+                                label(for=cruddy._id ).colorbtn= cruddy._id
+                                input(type="checkbox" id=cruddy._id name='id' value=cruddy._id required)
+
+
+                                button(type='submit') Delete
