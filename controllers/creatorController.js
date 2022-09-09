@@ -54,6 +54,7 @@ exports.cruddy_delete_post = (req, res, next) => {
 
     Cruddy.findByIdAndRemove(req.body.id, function deleteCruddy(err) {
         if (err) { return next(err); }
+        console.log(req.body);
     });
 
     res.redirect('/');

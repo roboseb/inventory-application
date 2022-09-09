@@ -29,10 +29,17 @@ September 7th, 2022
 
     Lots of good progress today. Even got some solid styling and animations in.
 
+September 8th, 2022
+
+    Would really like to get this done by the end of day friday so that I can show it off to my mom. Might just push what I've got done to heroku by the weekend. (INB4 RIP heroku)
+
+    Since I finished this dope walking animation yesterday, I think I'll setup all the simulation stuff today, and clean up the worlds in general. Still not sure if I want the worlds to be customizable at all or even if they should be different. Should you be able to delete worlds? No idea yet. Theoretically, a lot of that wouldn't be so hard to implement.
+
+
 ---To-Do---
 
--Ability to add new cruddies
--Ability to delete cruddies
+DONE-Ability to add new cruddies
+DONE-Ability to delete cruddies
 -Ability to name cruddies
 -Create worlds/add cruddies to specific worlds 
 -random color options in creator
@@ -41,3 +48,8 @@ September 7th, 2022
 -add hats and front accessories
 -counts for each world population
 -latest cruddies section
+-worlds can be overpopulated, starving cruddies
+-different color cruddies have different traits.
+-add cruddies breeding over time
+-day/night + shadows?
+-click cruddy for random animation

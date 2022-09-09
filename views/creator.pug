@@ -2,6 +2,8 @@ extends layout
 
 block content 
 
+    - var colors = [{color: 'aquamarine', name: 'Aquamarine'}, {color: 'lightcoral', name: 'Coral'}, {color: 'mediumpurple', name: 'Purple'}, {color: 'goldenrod', name: 'Golden'}, {color: 'hotpink', name: 'Pink'}, {color: 'chartreuse', name: 'Grass'}, {color: 'magenta', name: 'Magenta'}, {color: 'maroon', name: 'Maroon'}];
+    - var randomColor = [{color: 'black', name: 'Black'}, {color: 'whitesmoke', name: 'Smoke'}][Math.floor(Math.random() * 2)]; 
 
     div.header= title 
     div#creator
@@ -10,12 +12,18 @@ block content
             h2 Color
             #colorpicker.felt
 
-                - var colors = ['aquamarine', 'lightcoral', 'mediumpurple'];
+                
                 for color in colors
 
                     
-                    input(type="radio" id=color name='color' value=color required)
-                    label(for=color style=`background-color: ${color}`).colorbtn= color
+                    input(type="radio" id=color.color name='color' value=color.color required)
+                    label(for=color.color style=`background-color: ${color.color}`).colorbtn= color.name
+
+                //- Roll for secret color, which itself is a roll.
+                if Math.floor(Math.random() * 10) === 0
+                    input(type="radio" id=randomColor.color name='color' value=randomColor.color required)
+                    label(for=randomColor.color style=`background-color: ${randomColor.color}`).colorbtn= randomColor.name
+
 
             //- #toppicker 
             //- #frontpicker 
@@ -33,7 +41,7 @@ block content
 
 
         #cruddisplay 
-            div.crud
+            div.crud.sitting
                 .crudfoot2
                 .crudfoot1
 

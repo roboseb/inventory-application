@@ -12,7 +12,7 @@ block content
 
                 if String(JSON.parse(cruddy.world[0])._id) === String(world._id)
 
-                    div.crud.walking
+                    div.crud.stacked(id=`${cruddy._id}`)
                         .crudfoot2
                         .crudfoot1
 
@@ -23,6 +23,10 @@ block content
                         .eye1
                         .eye2
 
+                        .bubble.hungry 🍏
+                        .bubble.dying 💀
+
+
                         form(method='POST' action='').deletebox 
                             div= JSON.parse(cruddy.world[0]).name
 
@@ -31,6 +35,13 @@ block content
 
 
                             button(type='submit') Delete
+            each val in [1, 2, 3]
+                .bush.stacked(id=`bush${val}`)
+                    .bushshadow
+                    .mainbush.felt
+                    .berry1.custom-button.uneaten
+                    .berry2.custom-button.uneaten
+                
+            
 
-            .bush
-            .bush
+    script(src='/javascripts/world.js')

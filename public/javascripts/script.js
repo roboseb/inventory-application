@@ -15,7 +15,7 @@ const updateCruddy = () => {
 const colorButtons = Array.from(document.querySelectorAll('.colorbtn'));
 colorButtons.forEach(button => {
     button.addEventListener('click', () => {
-        options.color = button.innerText;
+        options.color = button.style.backgroundColor;
         updateCruddy();
     })
 });
