@@ -46,3 +46,27 @@ worlds.forEach(world => {
         world.classList.toggle('expanded');
     });
 });
+
+// Add walking animation on walk button click.
+const walkButton = document.getElementById('walk');
+walkButton.addEventListener('click', () => {
+    const cruddy = document.querySelector('.crud');
+    cruddy.classList.remove('sitting', 'dead');
+    cruddy.classList.toggle('walking');
+});
+
+// Add sitting animation on sit button click.
+const sitButton = document.getElementById('sit');
+sitButton.addEventListener('click', () => {
+    const cruddy = document.querySelector('.crud');
+    cruddy.classList.remove('walking', 'dead');
+    cruddy.classList.toggle('sitting');
+});
+
+// Add dying animation on play dead button click.
+const dieButton = document.getElementById('die');
+dieButton.addEventListener('click', () => {
+    const cruddy = document.querySelector('.crud');
+    cruddy.classList.remove('sitting', 'walking');
+    cruddy.classList.toggle('dead');
+});

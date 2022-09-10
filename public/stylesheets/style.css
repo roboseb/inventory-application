@@ -232,6 +232,8 @@ body {
     background-color: green;
     width: 100%;
     height: 100%;
+
+    overflow: hidden;
 }
 
 #optionsbox {
@@ -255,8 +257,11 @@ body {
     background-color: var(--mint);
 
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+
+    
 }
 
 #cruddisplay>.crud {
@@ -264,6 +269,28 @@ body {
     width: 20rem;
 
     margin: 20px;
+}
+
+#cruddisplay>#anipicker {
+    display: flex;
+    gap: 10px;
+
+    height: initial !important;
+    width: initial !important;
+}
+
+#cruddisplay>#anipicker>button {
+    background-color: var(--crimson);
+    color: white;
+    border: 5px solid black;
+    border-radius: 10px;
+
+    transition: all 0.3s;
+}
+
+#cruddisplay>#anipicker>button:hover {
+    background-color: #eba3b5;
+    color: black;
 }
 
 #creator h2 {
@@ -400,7 +427,7 @@ body {
     transform: translate(-50%, -50%);
 }
 
-#creator button {
+#creator .custom-button {
 
     height: 8rem;
     width: 8rem;
@@ -842,6 +869,16 @@ body {
     filter: opacity(1);
 }
 
+.crud.playing>.bubble.playing {
+    filter: opacity(1);
+}
+
+.crud.scoring > .bubble.score {
+    transform: translate(0%, -100%) scaleX(-1);
+    font-size: 2rem;
+    filter: opacity(1);
+}
+
 .bubble:before,
 .bubble:after {
     content: "";
@@ -880,3 +917,314 @@ body {
 
     transition: all 3s, transform 0.2s, z-index 0s;
 }
+
+.crud.dead {
+    animation: deadcrud 2s cubic-bezier(0.7, 0, 0.84, 0);
+    transform: rotateX(70deg) rotateZ(70deg) translateZ(-100px) translateX(100px);
+}
+
+@keyframes deadcrud {
+    0% {transform: rotateX(0deg) rotateZ(0deg) translateZ(0px) translateX(0px);}
+    100% {transform: rotateX(70deg) rotateZ(70deg) translateZ(-100px) translateX(100px);}
+}
+
+.crud.dead>.eye1, .crud.dead>.eye2 {
+    animation: deadcrudeye 2s;
+    transform: scaleX(2); 
+    clip-path: polygon(20% 0%, 0% 20%, 30% 50%, 0% 80%, 20% 100%, 50% 70%, 80% 100%, 100% 80%, 70% 50%, 100% 20%, 80% 0%, 50% 30%);
+}
+
+@keyframes deadcrudeye {
+    0% {transform: scaleX(1); clip-path: polygon(0 0, 0% 20%, 0 50%, 0 100%, 20% 100%, 49% 100%, 80% 100%, 100% 100%, 100% 50%, 100% 20%, 100% 0, 51% 0);}
+    50% {transform: scaleX(2); clip-path: polygon(20% 0%, 0% 20%, 30% 50%, 0% 80%, 20% 100%, 50% 70%, 80% 100%, 100% 80%, 70% 50%, 100% 20%, 80% 0%, 50% 30%);}
+    100% {transform: scaleX(2); clip-path: polygon(20% 0%, 0% 20%, 30% 50%, 0% 80%, 20% 100%, 50% 70%, 80% 100%, 100% 80%, 70% 50%, 100% 20%, 80% 0%, 50% 30%);}
+}
+
+.crud.dead>.crudfelt1 {
+    animation: deadcrudfelt1 2s cubic-bezier(0.7, 0, 0.84, 0);
+    filter: brightness(2) contrast(1.5) drop-shadow(30px 10px 0px rgb(42, 42, 42));
+}
+
+@keyframes deadcrudfelt1 {
+    0% {filter: brightness(2) contrast(1.5) drop-shadow(0px 10px 0px rgb(42, 42, 42));}
+    100% {filter: brightness(2) contrast(1.5) drop-shadow(30px 10px 0px rgb(42, 42, 42));}
+}
+
+.crud.dead>.crudfelt2 {
+    animation: deadcrudfelt2 2s cubic-bezier(0.7, 0, 0.84, 0);
+    filter: brightness(2) contrast(1.5) drop-shadow(30px 15px 0px rgb(42, 42, 42));
+}
+
+@keyframes deadcrudfelt2 {
+    0% {filter: brightness(2) contrast(1.5) drop-shadow(0px 10px 0px rgb(42, 42, 42));}
+    100% {filter: brightness(2) contrast(1.5) drop-shadow(30px 15px 0px rgb(42, 42, 42));}
+}
+
+.crud.dead>.crudfoot1, .crud.dead>.crudfoot2 {
+    animation: deadcrudfoot 2s cubic-bezier(0.7, 0, 0.84, 0);
+    filter: drop-shadow(30px 10px 0px rgb(42, 42, 42));
+}
+
+@keyframes deadcrudfoot {
+    0% {filter: drop-shadow(0px 10px 0px rgb(42, 42, 42));}
+    100% {filter: drop-shadow(30px 10px 0px rgb(42, 42, 42));}
+}
+
+#dancemachine {
+    position: absolute;
+    top: 0%;
+    left: 5%;
+
+    height: 20rem;
+    width: 12rem;
+    transform: translate(0%, -90%);
+    background-color: rgb(98, 98, 98);
+
+    display: flex;
+    align-items: center;
+    border-radius: 1.5rem;
+    filter: initial;
+}
+
+#dancemachine.running:after {
+    animation: scroll 4s infinite linear;
+} 
+
+@keyframes scroll {
+    from {background-position: 0% 0%;}
+    to {background-position: 0% -100%;}
+}
+
+#dancemachine>#side {
+    box-sizing: border-box;
+    height: 100%;
+    border: 5px solid black;
+
+    background-color: rgb(66, 66, 66);
+    border-radius: 2rem;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    transform: scaleX(0.7);
+    transform-origin: left;
+}
+#dancemachine>#side>.roller {
+    position: relative;
+
+    width: 2rem;
+    height: 2rem;
+    background-color: black;
+
+    border-radius: 100%;
+
+    transform-origin: center;
+}
+
+#dancemachine.running>#side>.roller {
+    animation: rolling 2s infinite linear;
+}
+
+@keyframes rolling {
+    from {transform: rotate(0deg)}
+    to {transform: rotate(360deg)}
+}
+
+#dancemachine>#side>.roller:after {
+    content: '';
+    position: absolute;
+
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+
+    height: 20%;
+    width: 20%;
+    border-radius: 100%;
+
+    background-color: white;
+
+}
+
+#dancemachine>#legs {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+
+    height: 15%;
+    width: 100%;
+    transform: translateY(100%);
+
+    display: flex;
+    justify-content: space-between;
+    padding: 0% 10%;
+}
+
+#dancemachine>#legs>#right, #dancemachine>#legs>#left {
+    height: 100%;
+    width: 10%;
+
+    background-color: black;
+    border-radius: 0% 0% 20% 20%;
+}
+
+#dancemachine>#legs>#pad {
+    position: absolute;
+
+    bottom: 0;
+    left: 0;
+    transform: translateY(100%) skewX(60deg);
+    transform-origin: top left;
+
+    height: 150%;
+    width: 100%;
+    background-color: white;
+    border: 5px solid black;
+    border-left: 10px solid black;
+    border-right: 10px solid black;
+
+    display: flex;
+}
+
+#dancemachine>#legs>#pad>div {
+    flex-grow: 1;
+    margin: 10px;
+
+    border: 5px solid black;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#dancemachine>#legs>#pad>div>div {
+    height: 70%;
+    width: 70%;
+}
+
+#dancemachine>#legs>#pad>div:first-child>div {
+    clip-path: polygon(40% 0%, 40% 20%, 100% 20%, 100% 80%, 40% 80%, 40% 100%, 0% 50%);
+    background-color: blue;
+}
+
+#dancemachine>#legs>#pad>div:last-child>div {
+    clip-path: polygon(0% 20%, 60% 20%, 60% 0%, 100% 50%, 60% 100%, 60% 80%, 0% 80%);
+    background-color: hotpink;
+}
+
+#dancemachine>#boardbox {
+    overflow: hidden;
+
+    flex-grow: 1;
+    height: 100%;
+    transform: translate(-5%, 0%);
+    background-color: rgba(255, 0, 0, 0);
+    border-radius: 0% 10% 10% 0%;
+}
+
+#dancemachine #board {
+    width: 100%;
+    transform: translate(-5%, -100%);
+
+    display: flex;
+    align-items: center;
+    flex-direction: column-reverse;
+    gap: 10px;
+}
+
+#dancemachine.running #board {
+    animation: scrollboard 10s linear;
+}
+
+@keyframes scrollboard {
+    from {}
+    to {transform: translateY(100%);}
+}
+
+#dancemachine .move {
+    height: 4rem;
+    width: 35%;
+
+    background-color: blue;
+}
+
+#dancemachine .move.left {
+    clip-path: polygon(40% 0%, 40% 20%, 100% 20%, 100% 80%, 40% 80%, 40% 100%, 0% 50%);
+    transform: translateX(-60%);
+    background-color: blue;
+
+}
+
+#dancemachine .move.right {
+    clip-path: polygon(0% 20%, 60% 20%, 60% 0%, 100% 50%, 60% 100%, 60% 80%, 0% 80%);
+    transform: translateX(70%);
+    background-color: hotpink;
+}
+
+#boardbox>#bottom {
+    position: absolute;
+
+    bottom: 5%;
+    left: 0;
+
+    width: 100%;
+    height: 25%;
+    border-radius: 2rem;
+    background-color: rgba(255, 255, 255, 0.383);
+    border: 5px solid black;
+
+    display: flex;
+    gap: 10px;
+    padding: 10px;
+}
+
+#boardbox>#bottom>#lefticon {
+    clip-path: polygon(40% 0%, 40% 20%, 100% 20%, 100% 80%, 40% 80%, 40% 100%, 0% 50%);
+    background-color: rgba(0, 0, 0, 0.452);
+    flex-grow: 1;
+}
+
+#boardbox>#bottom>#righticon {
+    clip-path: polygon(0% 20%, 60% 20%, 60% 0%, 100% 50%, 60% 100%, 60% 80%, 0% 80%);
+    background-color: rgba(0, 0, 0, 0.452);
+    flex-grow: 1;
+}
+
+#boardbox>#bottom.correct {
+    animation: rightmove 0.2s;
+}
+
+@keyframes rightmove {
+    from {background-color: rgba(255, 255, 255, 0.383);}
+    to {background-color: rgba(0, 255, 21, 0.383);}
+}
+
+#boardbox>#bottom.wrong {
+    animation: wrongmove 0.2s;
+}
+
+@keyframes wrongmove {
+    from {background-color: rgba(255, 255, 255, 0.383);}
+    to {background-color: rgba(255, 0, 0, 0.383);}
+}
+
+.crud.danceleft>.crudfoot2 {
+    animation: cruddanceleft 0.2s infinite cubic-bezier(0.6, -0.28, 0.74, 0.05);
+}
+
+@keyframes cruddanceleft {
+    0% {transform: translate(0%, 0%);}
+    50% {transform: translate(10%, -10%) rotate(-0deg);}
+    100% {transform: translate(0%, 0%);}
+} 
+
+.crud.danceright>.crudfoot1 {
+    animation: cruddanceright 0.2s infinite cubic-bezier(0.6, -0.28, 0.74, 0.05);
+}
+
+@keyframes cruddanceright {
+    0% {transform: translate(0%, 0%);}
+    50% {transform: translate(-10%, -20%) rotate(5deg);}
+    100% {transform: translate(0%, 0%);}
+} 

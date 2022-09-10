@@ -35,6 +35,10 @@ September 8th, 2022
 
     Since I finished this dope walking animation yesterday, I think I'll setup all the simulation stuff today, and clean up the worlds in general. Still not sure if I want the worlds to be customizable at all or even if they should be different. Should you be able to delete worlds? No idea yet. Theoretically, a lot of that wouldn't be so hard to implement.
 
+September 9th, 2022
+
+    Only worked on this for four days so far, but considering the new stack I'm working with, seems like things are going pretty well.
+    Also, pug is the dopest shit. Today I need to start by having cruddies actually get deleted when dying. Some sort of issues with having the id actually sent to the server. Then I can either attempt to implement breeding/other random actions, or I can start the customization options.
 
 ---To-Do---
 
@@ -53,3 +57,10 @@ DONE-Ability to delete cruddies
 -add cruddies breeding over time
 -day/night + shadows?
 -click cruddy for random animation
+-sort customizers by popularity
+-mobile support
+-different bush counts based on world
+-fix in-world delete UI
+-dance machine score
+-dancing skill based on colour
+-some cruddies like dancing/eating more than others

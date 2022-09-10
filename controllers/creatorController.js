@@ -3,6 +3,7 @@ const World = require('../models/world');
 
 const mongoose = require('mongoose');
 
+
 const async = require('async');
 const { body, validationResult } = require("express-validator");
 
@@ -54,7 +55,7 @@ exports.cruddy_delete_post = (req, res, next) => {
 
     Cruddy.findByIdAndRemove(req.body.id, function deleteCruddy(err) {
         if (err) { return next(err); }
-        console.log(req.body);
+        console.log(req.body.id);
     });
 
     res.redirect('/');

@@ -73,6 +73,149 @@ const animateSitting = (cruddy) => {
     cruddy.classList.add('sitting');
 }
 
+// Have a cruddy play the dancing game.
+const playGame = (cruddy) => {
+    const machine = document.getElementById('dancemachine');
+
+    // Prevent multiple cruddies from using the machine.
+    if (!machine.classList.contains('used')) {
+        machine.classList.add('used');
+
+        const style = getComputedStyle(machine);
+
+        // Move the cruddy to the targeted bush.
+        cruddy.style.top =  `calc(${style.top} - 1rem)`;
+        cruddy.style.left = `calc(${style.left} + 6rem)`;
+
+        // Point cruddy in the right direction.
+        const crudRect = cruddy.getBoundingClientRect();
+        const machineRect = machine.getBoundingClientRect();
+
+        if (crudRect.x - machineRect.x >= 0) {
+            cruddy.style.transform = 'scaleX(-1)';
+        } else {
+            cruddy.style.transform = 'scaleX(1)';
+        }
+
+        // Toggle walking animation on and off.
+        cruddy.classList.add('walking', 'playing');
+
+        // Remove the walking animation once arrived at the machine.
+        setTimeout(() => {
+            cruddy.classList.remove('walking', 'playing');
+            cruddy.style.transform = 'scaleX(-1)';
+            runGame(cruddy);
+        }, 3000);
+    }
+}
+
+// Run a session on the dance machine.
+const runGame = (cruddy) => {
+    const machine = document.getElementById('dancemachine');
+    machine.classList.add('running');
+
+    generateBoard(cruddy);
+
+    setTimeout(() => {
+        machine.classList.remove('used');
+        cruddy.classList.remove('playing');
+    }, 6200);
+}
+
+// Add randomly generated moves to the dance machine.
+const generateBoard = (cruddy) => {
+    const machine = document.getElementById('dancemachine');
+    const board = document.getElementById('board');
+
+    const totalMoves = 20;
+    let correctMoves = []
+
+    // Generate moves for the machine.
+    for (let i = 0; i < totalMoves; i++) {
+        const move = document.createElement('div');
+        move.classList.add('move');
+
+        const roll = Math.floor(Math.random() * 2);
+        if (roll === 1) {
+            move.classList.add('left');
+            correctMoves.push('left');
+        } else {
+            move.classList.add('right');
+            correctMoves.push('right');
+        }
+
+        board.appendChild(move);
+    }
+
+    let moveList = [];
+    let index = 0;
+    let score = 0;
+
+    for (let i = 0; i < totalMoves; i++) {
+        const roll = Math.floor(Math.random() * 10);
+        if (roll === 1) {
+            moveList.push('wrong');
+        } else {
+            moveList.push('correct');
+        }
+    }
+
+    // Animate the movebox based on cruddy's inputs.
+    setTimeout(() => {
+
+
+        myInterval = setInterval(() => {
+
+            // Animate the machine's display.
+            const bottom = document.getElementById('bottom');
+            bottom.classList.remove('correct', 'wrong');
+            void bottom.offsetHeight;
+            bottom.classList.add(moveList[index]);
+
+            //Animate cruddy dancing.
+            cruddy.classList.remove('danceleft', 'danceright');
+            void cruddy.offsetHeight;
+            
+            if (moveList[index] === 'correct') {
+                cruddy.classList.add(`dance${correctMoves[index]}`);
+                score++;
+            } else {
+                switch(correctMoves[index]) {
+                    case 'left':
+                        cruddy.classList.add('danceright');
+                    case 'right':
+                        cruddy.classList.add('danceleft');
+                }
+
+            }
+
+            index++;
+
+            if (index === totalMoves + 1) {
+                cruddy.classList.remove('danceleft', 'danceright');
+                clearInterval(myInterval);
+            };
+        }, 250);
+    }, 600);
+
+    setTimeout(() => {
+        machine.classList.remove('running');
+
+        cruddy.classList.add('scoring');
+        const scoreBubble = cruddy.querySelector('.score');
+        scoreBubble.innerText = `${score}!`;
+
+        setTimeout(() => {
+            cruddy.classList.remove('scoring');
+        }, 2000);
+
+        const moves = Array.from(document.querySelectorAll('.move'));
+        moves.forEach(move => {
+            move.remove();
+        });
+    }, 6200);
+}
+
 // Have a cruddy attempt to find and eat food.
 const gatherFood = (cruddy) => {
     const bushes = Array.from(document.querySelectorAll('.bush'));
@@ -112,21 +255,21 @@ const gatherFood = (cruddy) => {
                 setTimeout(() => {
                     berry.classList.remove('eaten');
                     berry.classList.add('uneaten');
-                }, 60000);
+                }, 24000);
 
             }, 3000);
 
             found = true;
-        } else if (index === 2 && !found) {
-            console.log('NO FOOD!')
+        } else if (index === bushes.length - 1 && !found) {
             cruddy.classList.add('dying');
             setTimeout(() => {
+                cruddy.style.transform = null;
                 cruddy.classList.remove('dying');
+                cruddy.classList.add('dead');
             }, 2000);
 
-            console.log(cruddy.id);
-
-            sendData({id: cruddy.id});
+            // Send post request to delete the passed cruddy.
+            sendData({ id: cruddy.id });
 
         }
     });
@@ -156,12 +299,16 @@ const sendData = (data) => {
 
 // Have a cruddy perform a random action.
 const performRandomAction = (cruddy) => {
+    if (cruddy.classList.contains('dead')) return;
+    if (cruddy.classList.contains('playing')) return;
+
     cruddy.classList.remove('sitting');
 
     const actions = [
         moveToRandomPosition,
-        // animateSitting,
-        gatherFood
+        animateSitting,
+        gatherFood,
+        playGame
     ]
 
     const index = Math.floor(Math.random() * actions.length);
