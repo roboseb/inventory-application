@@ -1,0 +1,75 @@
+extends layout
+
+block content 
+
+    - var colors = [{color: 'aquamarine', name: 'Aquamarine'}, {color: 'lightcoral', name: 'Coral'}, {color: 'mediumpurple', name: 'Purple'}, {color: 'goldenrod', name: 'Golden'}, {color: 'hotpink', name: 'Pink'}, {color: 'chartreuse', name: 'Grass'}, {color: 'magenta', name: 'Magenta'}, {color: 'maroon', name: 'Maroon'}, {color: 'white', name: 'White'}];
+   
+    - var tempPos = 'top';
+
+    div.header= title
+    div#creator
+
+        form(method='POST' action='')#optionsbox
+            h2 Color
+            #colorpicker.felt
+
+                
+                for color in colors
+
+                    
+                    input(type="radio" id=color.color name='color' value=color.color required)
+                    label(for=color.color style=`background-color: ${color.color}`).colorbtn= color.name
+
+                input(type="radio" id='black' name='color' value='black' required)
+                label(for='black' style=`background-color: black; color: white`).colorbtn Black
+
+            h2 Clip Path 
+            #clip-path.felt
+                input(type='text' placeholder='polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%)' value='polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%)' required).path
+                button#addlayerbtn(type='button') Add
+
+            h2 Layers
+            #layers.felt 
+                button#changesidebtn.def-button(type='button') Change to Front
+
+            button(type='button').custom-button.submit-item 
+                div Add
+
+
+
+                
+
+
+
+        #cruddisplay
+
+            button#itemboxtoggle Toggle Preview
+
+
+            div.crud
+                .crudfoot2
+                .crudfoot1
+
+                .crudfelt1
+                .bod.crudbod1
+
+
+                .crudfelt2
+                .bod.crudbod2
+
+                
+                .eye1
+                .eye2
+                .top-item-box.item-box
+                    .temp-item.felt.item
+                .front-item-box.item-box.deselected
+                    .temp-item.felt.item
+
+
+
+            #anipicker
+                button.anibtn#walk Walk 
+                button.anibtn#sit Sit 
+                button.anibtn#die Play Dead
+
+    script(src='/javascripts/item-creator.js')

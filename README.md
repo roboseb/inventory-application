@@ -40,27 +40,40 @@ September 9th, 2022
     Only worked on this for four days so far, but considering the new stack I'm working with, seems like things are going pretty well.
     Also, pug is the dopest shit. Today I need to start by having cruddies actually get deleted when dying. Some sort of issues with having the id actually sent to the server. Then I can either attempt to implement breeding/other random actions, or I can start the customization options.
 
+September 11th, 2022
+
+    Seems reasonable to try to limit this project to another couple days.
+
+September 12th, 2022
+
+    Welp, was making some good progress yesterday, but had to do some family favours, so didn't do more than two hours of work. Should be able to finish up all the logic related to items today, and maybe start cleaning up more of the UI.
+
+    Somehow I fucked up my log dates. Also introduced some bugs in top/front item displaying, which I should be able to fix tomorrow. Along with writing the actual items to the cruddies and displaying them in worlds. Probably will try to quickly clean it up by end of day tomorrow or early wednesday, and then move on.
+
+
+
 ---To-Do---
 
 DONE-Ability to add new cruddies
 DONE-Ability to delete cruddies
--Ability to name cruddies
+CANCEL-Ability to name cruddies
 -Create worlds/add cruddies to specific worlds 
--random color options in creator
+DONE-random color options in creator
 -idle animations
--walking animations
+DONE-walking animations
 -add hats and front accessories
 -counts for each world population
 -latest cruddies section
--worlds can be overpopulated, starving cruddies
+DONE-worlds can be overpopulated, starving cruddies
 -different color cruddies have different traits.
--add cruddies breeding over time
--day/night + shadows?
--click cruddy for random animation
+CANCEL-add cruddies breeding over time
+CANCEL-day/night + shadows?
+CANCEL-click cruddy for random animation
 -sort customizers by popularity
 -mobile support
 -different bush counts based on world
 -fix in-world delete UI
--dance machine score
+DONE-dance machine score
 -dancing skill based on colour
 -some cruddies like dancing/eating more than others
+-default shapes in item creator

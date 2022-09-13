@@ -1,5 +1,6 @@
 const Cruddy = require('../models/cruddy');
 const World = require('../models/world');
+const Item = require('../models/item');
 
 const mongoose = require('mongoose');
 
@@ -12,10 +13,11 @@ exports.creator = (req, res) => {
         world_list(callback) {
             World.find({}, callback); // Pass an empty object as match condition to find all documents of this collection
         },
+        item_list(callback) {
+            Item.find({}, callback); // Pass an empty object as match condition to find all documents of this collection
+        },
     },
         (err, results) => {
-            console.log('creator');
-
             res.render('creator', { title: 'New Cruddy', error: err, data: results});
         });
 };
@@ -43,7 +45,7 @@ exports.cruddy_create_post = (req, res, next) => {
     } else {
         cruddy.save(function (err) {
             if (err) { return next(err); }
-            // Cruddy saved. Redirect to genre detail page.
+            // Cruddy saved. Redirect to main page.
             res.redirect('/');
         });
     }
@@ -51,7 +53,6 @@ exports.cruddy_create_post = (req, res, next) => {
 
 exports.cruddy_delete_post = (req, res, next) => {
     console.log('deleting cruddy...');
-    //console.log(`id: ${req.body.id}`);
 
     Cruddy.findByIdAndRemove(req.body.id, function deleteCruddy(err) {
         if (err) { return next(err); }

@@ -15,6 +15,9 @@ const updateCruddy = () => {
 const colorButtons = Array.from(document.querySelectorAll('.colorbtn'));
 colorButtons.forEach(button => {
     button.addEventListener('click', () => {
+        // Prevent updating cruddy colour in item creator.
+        if (document.querySelector('#layers')) return;
+
         options.color = button.style.backgroundColor;
         updateCruddy();
     })

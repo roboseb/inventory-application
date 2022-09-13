@@ -99,7 +99,7 @@ body {
     bottom: 15%;
     left: 0%;
 
-    background-color: rgb(255, 255, 255);
+    background-color: rgba(255, 255, 255);
     border-radius: 100% 100% 60% 60%;
     filter: opacity(0.7);
     width: 90%;
@@ -279,7 +279,7 @@ body {
     width: initial !important;
 }
 
-#cruddisplay>#anipicker>button {
+#cruddisplay>#anipicker>button, #itemboxtoggle, #clip-path>button, .def-button {
     background-color: var(--crimson);
     color: white;
     border: 5px solid black;
@@ -288,7 +288,7 @@ body {
     transition: all 0.3s;
 }
 
-#cruddisplay>#anipicker>button:hover {
+#cruddisplay>#anipicker>button:hover, #itemboxtoggle:hover, #clip-path>button:hover, .def-button:hover {
     background-color: #eba3b5;
     color: black;
 }
@@ -297,7 +297,7 @@ body {
     margin-bottom: -15px;
 }
 
-#colorpicker, #worldpicker {
+#colorpicker, #worldpicker, #layers, #clip-path, #itempicker {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -336,6 +336,14 @@ body {
     background-color: white !important;
 }
 
+#colorpicker label[for='black']:hover {
+    color: black !important;
+}
+
+#colorpicker label[for='white']:hover {
+    background-color: black !important;
+    color: white !important;
+}
 
 #creator input:checked+label {
     background-color: white;
@@ -519,7 +527,7 @@ body {
     position: relative;
 }
 
-.crud.walking>.bod, .crud.walking>.crudfelt1, .crud.walking>.crudfelt2 {
+.crud.walking>.bod, .crud.walking>.crudfelt1, .crud.walking>.crudfelt2, .crud.walking>.item-box {
     animation: crudwalkbod 0.5s infinite;
 }
 
@@ -607,7 +615,7 @@ body {
     }
 }
 
-.crud.sitting>.bod, .crud.sitting>.crudfelt1, .crud.sitting>.crudfelt2 {
+.crud.sitting>.bod, .crud.sitting>.crudfelt1, .crud.sitting>.crudfelt2, .crud.sitting>.item-box {
     animation: crudsitbod 3s infinite;
 }
 
@@ -1228,3 +1236,151 @@ body {
     50% {transform: translate(-10%, -20%) rotate(5deg);}
     100% {transform: translate(0%, 0%);}
 } 
+
+.crud .top-item-box {
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 45%;
+
+    background-color: rgba(255, 72, 102, 0.5);
+    transition: all 0.3s;
+}
+
+.crud .front-item-box {
+    position: absolute;
+
+    bottom: 0;
+    left: 0;
+
+    width: 100%;
+    height: 55%;
+
+    background-color: rgba(92, 92, 255, 0.5);
+    transition: all 0.3s;
+}
+
+.front-item-box.hidden, .top-item-box.hidden {
+    background-color: rgba(92, 92, 255, 0);
+}
+
+.front-item-box.hidden>.temp-item, .top-item-box.hidden>.temp-item {
+    filter: opacity(0) !important;
+}
+
+.front-item-box>.temp-item, .top-item-box>.temp-item {
+    z-index: 1;
+}
+
+.crud .top-item-box>.item, .crud .front-item-box>.item {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: black;
+
+    width: 100%;
+    height: 100%;
+
+    filter: initial;
+    border-radius: initial;
+    transition: all 0.2s;
+}
+
+.layericon {
+    height: 4rem;
+    width: 7rem;
+
+
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+}
+
+.layericon>button {
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    background-color: white;
+    color: var(--crimson);
+}
+
+.layericon>button:hover {
+    background-color: var(--crimson);
+    color: white;
+}
+
+.layericon>div, .layericon>.shape {
+    filter: initial;
+    border-radius: initial;
+    flex-grow: 1;
+    height: 100%;
+}
+
+.deselected>* {
+    filter: opacity(0) !important;
+}
+
+.itemicon {
+    height: 4rem;
+    width: 7rem;
+
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+
+    border: 5px solid black;
+    border-radius: 1rem;
+    padding: 20px;
+    cursor: pointer;
+}
+
+.itemicon>.itemiconlayer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+}
+
+.itemicon>.itemtype {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    background-color: rgba(255, 255, 255, 0.466);
+    transform: translate(-50%, -50%);
+    white-space: nowrap;
+
+    backdrop-filter: blur(0px);
+    filter: opacity(0);
+}
+
+.itemicon:hover>.itemtype {
+    backdrop-filter: blur(5px);
+    filter: opacity(1);
+}
+
+#newitembtn {
+    height: 4rem;
+    width: 7rem;
+    border: 5px solid black;
+    background-color: white;
+    border-radius: 1rem;
+    text-decoration: none;
+    color: black;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    transition: all 0.3s;
+}
+
+#newitembtn:hover {
+    background-color: black;
+    color: white;
+}

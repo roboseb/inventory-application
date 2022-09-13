@@ -12,10 +12,10 @@ block content
             h2 Color
             #colorpicker.felt
 
-                
+
                 for color in colors
 
-                    
+
                     input(type="radio" id=color.color name='color' value=color.color required)
                     label(for=color.color style=`background-color: ${color.color}`).colorbtn= color.name
 
@@ -28,12 +28,35 @@ block content
             //- #toppicker 
             //- #frontpicker 
 
+            a(href='/catalog/item-creator') New Item
+
+            h2 Items
+            #itempicker.felt
+                each item, index in data.item_list
+                    
+                    if item.type = 'top'
+                        input(type="radio" id=`item${index}` name='topItem' value=item._id)
+                        label.itemicon(class=`${item.type}-item` for=`item${index}`)
+                            each layer in item.layers
+                                div.itemiconlayer(style=`background-color: ${layer.color}; clip-path: ${layer.clipPath}`)
+                            div.itemtype= `${item.type} item`
+
+                    else if item.type = 'front'
+                        input(type="radio" id=`item${index}` name='frontItem' value=item._id)
+                        label.itemicon(class=`${item.type}-item` for=`item${index}`)
+                            each layer in item.layers
+                                div.itemiconlayer(style=`background-color: ${layer.color}; clip-path: ${layer.clipPath}`)
+                            div.itemtype= `${item.type} item`
+
+                a#newitembtn(href='/catalog/item-creator')
+                    div New Item
+
             h2 World
             #worldpicker.felt
                 each world in data.world_list
                     - var name = world.name
                     div
-                        
+
                         input(type="radio" id=name name='world' value=world required)
                         label(for=name).worldbtn= name
             button(type='submit').custom-button 
@@ -49,12 +72,16 @@ block content
                 .bod.crudbod1
                 .crudfelt2
                 .bod.crudbod2
-                
+
                 .eye1
                 .eye2
+
+                .top-item-box.item-box.hidden
+                .front-item-box.item-box.hidden
 
             #anipicker
                 button.anibtn#walk Walk 
                 button.anibtn#sit Sit 
                 button.anibtn#die Play Dead
 
+    script(src='/javascripts/cruddy-creator.js')
