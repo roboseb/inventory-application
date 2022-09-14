@@ -2,7 +2,7 @@ mixin all_cruddies(data)
     
     div.crudbox
         each cruddy in data.cruddy_list
-            div.crud
+            div.crud(topItem=cruddy.topItem frontItem=cruddy.frontItem)
                 .crudfoot2
                 .crudfoot1
 
@@ -10,10 +10,19 @@ mixin all_cruddies(data)
                 .bod.crudbod1(style=`background-color: ${cruddy.color}`)
                 .crudfelt2
                 .bod.crudbod2(style=`background-color: ${cruddy.color}`)
+
                 .eye1
                 .eye2
-            
-                
+
+                .top-item-box.item-box.hidden
+                    if cruddy.topItem
+                        each layer in JSON.parse(cruddy.topItem).layers
+                            .item.felt(style=`background-color: ${layer.color}; clip-path: ${layer.clipPath}`)
+
+                .front-item-box.item-box.hidden
+                    if cruddy.frontItem
+                        each layer in JSON.parse(cruddy.frontItem).layers
+                            .item.felt(style=`background-color: ${layer.color}; clip-path: ${layer.clipPath}`)
 
                 form(method='POST' action='').deletebox 
 

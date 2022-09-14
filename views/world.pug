@@ -23,6 +23,16 @@ block content
                         .eye1
                         .eye2
 
+                        .top-item-box.item-box.hidden
+                            if cruddy.topItem
+                                each layer in JSON.parse(cruddy.topItem).layers
+                                    .item.felt(style=`background-color: ${layer.color}; clip-path: ${layer.clipPath}`)
+
+                        .front-item-box.item-box.hidden
+                            if cruddy.frontItem
+                                each layer in JSON.parse(cruddy.frontItem).layers
+                                    .item.felt(style=`background-color: ${layer.color}; clip-path: ${layer.clipPath}`)
+
                         .bubble.hungry 🍏
                         .bubble.dying 💀
                         .bubble.playing 🕺

@@ -50,6 +50,11 @@ September 12th, 2022
 
     Somehow I fucked up my log dates. Also introduced some bugs in top/front item displaying, which I should be able to fix tomorrow. Along with writing the actual items to the cruddies and displaying them in worlds. Probably will try to quickly clean it up by end of day tomorrow or early wednesday, and then move on.
 
+September 13th, 2022
+
+    Will today be the last day? Only time will tell. Need to fix/finalize all the item functionality, and massively clean up at least the home page. And some basic mobile layout implementation. Feels cool to have a project that I could easily build on and add some fun features to.
+
+    Spent the vast majority of the day finishing up all the item stuff. It works pretty well. I'm also gonna add some stuff to prevent deleting 'default' items, since they took so damn long to make.
 
 
 ---To-Do---
@@ -57,23 +62,26 @@ September 12th, 2022
 DONE-Ability to add new cruddies
 DONE-Ability to delete cruddies
 CANCEL-Ability to name cruddies
--Create worlds/add cruddies to specific worlds 
+CANCEL-Create worlds/add cruddies to specific worlds 
 DONE-random color options in creator
--idle animations
+CANCEL-idle animations
 DONE-walking animations
--add hats and front accessories
+DONE-add hats and front accessories
 -counts for each world population
--latest cruddies section
+CANCEL-latest cruddies section
 DONE-worlds can be overpopulated, starving cruddies
--different color cruddies have different traits.
+CANCEL-different color cruddies have different traits.
 CANCEL-add cruddies breeding over time
 CANCEL-day/night + shadows?
 CANCEL-click cruddy for random animation
--sort customizers by popularity
+CANCEL-sort customizers by popularity
 -mobile support
--different bush counts based on world
+CANCEL-different bush counts based on world
 -fix in-world delete UI
 DONE-dance machine score
--dancing skill based on colour
--some cruddies like dancing/eating more than others
--default shapes in item creator
+CANCEL-dancing skill based on colour
+CANCEL-some cruddies like dancing/eating more than others
+CANCEL-default shapes in item creator
+-favicon
+-better titles
+DONE-add my items to an undeletable list

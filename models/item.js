@@ -5,7 +5,8 @@ const Schema = mongoose.Schema;
 const ItemSchema = new Schema(
     {
         type: { type: String, required: true },
-        layers: []
+        layers: [],
+        locked: {type: Boolean}
     }
 );
 

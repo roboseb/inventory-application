@@ -13,42 +13,60 @@ exports.creator = (req, res) => {
         world_list(callback) {
             World.find({}, callback); // Pass an empty object as match condition to find all documents of this collection
         },
+        top_item_list(callback) {
+            Item.find({ 'type': 'top' }, callback); // Pass an empty object as match condition to find all documents of this collection
+        },
+        front_item_list(callback) {
+            Item.find({ 'type': 'front' }, callback); // Pass an empty object as match condition to find all documents of this collection
+        },
         item_list(callback) {
             Item.find({}, callback); // Pass an empty object as match condition to find all documents of this collection
         },
     },
         (err, results) => {
-            res.render('creator', { title: 'New Cruddy', error: err, data: results});
+            res.render('creator', { title: 'New Cruddy', error: err, data: results });
         });
 };
 
 exports.cruddy_create_post = (req, res, next) => {
 
-
-    console.log('creating...');
-    console.log(req.body.world);
-
     // Extract the validation errors from a request.
     const errors = validationResult(req);
 
-    const cruddy = new Cruddy(
-        { 
-            color: req.body.color,
-            world: req.body.world
-        }
-    );
+    // If id, delete passed item from DB.
+    if (req.body.id) {
+        console.log('deleting item...');
 
-    if (!errors.isEmpty()) {
-
-        console.log(errors);
-
-    } else {
-        cruddy.save(function (err) {
+        Item.findByIdAndRemove(req.body.id, function deleteItem(err) {
             if (err) { return next(err); }
-            // Cruddy saved. Redirect to main page.
-            res.redirect('/');
+            console.log(req.body.id);
         });
+
+    // If no id, create a cruddy from the data.
+    } else {
+        console.log('creating cruddy...');
+        const cruddy = new Cruddy(
+            {
+                color: req.body.color,
+                world: req.body.world,
+                topItem: req.body.topItem,
+                frontItem: req.body.frontItem
+            }
+        );
+
+        if (!errors.isEmpty()) {
+
+            console.log(errors);
+
+        } else {
+            cruddy.save(function (err) {
+                if (err) { return next(err); }
+                // Cruddy saved. Redirect to main page.
+                res.redirect('/');
+            });
+        }
     }
+
 };
 
 exports.cruddy_delete_post = (req, res, next) => {
@@ -60,5 +78,4 @@ exports.cruddy_delete_post = (req, res, next) => {
     });
 
     res.redirect('/');
-
 }

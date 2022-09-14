@@ -5,10 +5,44 @@ block content
     - var colors = [{color: 'aquamarine', name: 'Aquamarine'}, {color: 'lightcoral', name: 'Coral'}, {color: 'mediumpurple', name: 'Purple'}, {color: 'goldenrod', name: 'Golden'}, {color: 'hotpink', name: 'Pink'}, {color: 'chartreuse', name: 'Grass'}, {color: 'magenta', name: 'Magenta'}, {color: 'maroon', name: 'Maroon'}];
     - var randomColor = [{color: 'black', name: 'Black'}, {color: 'whitesmoke', name: 'Smoke'}][Math.floor(Math.random() * 2)]; 
 
-    div.header= title 
     div#creator
 
         form(method='POST' action='')#optionsbox
+            #allitems.felt.hidden
+                #topitembox
+                    .itemheader Top Items
+                    each item, index in data.top_item_list
+                        
+
+                            input(type="radio" id=`top${index}` name='topItem' value=JSON.stringify(item))
+                            label.itemicon(class=`${item.type}-item` for=`top${index}` foo=item._id)
+                                each layer in item.layers
+                                    div.itemiconlayer(style=`background-color: ${layer.color}; clip-path: ${layer.clipPath}`)
+                                if !item.locked
+                                    .deleteitembtn.def-button X
+                                        .confirmbox.hidden
+                                            .def-button.confirmdeletebtn(id=`${item._id}`) Delete 
+                                            .def-button.undo Undo
+
+                #frontitembox
+                    .itemheader Front Items
+                    each item, index in data.front_item_list
+                            input(type="radio" id=`front${index}` name='frontItem' value=JSON.stringify(item))
+                            label.itemicon(class=`${item.type}-item` for=`front${index}` foo=item._id)
+                                each layer in item.layers
+                                    div.itemiconlayer(style=`background-color: ${layer.color}; clip-path: ${layer.clipPath}`)
+                                if !item.locked
+                                    - console.log(item)
+                                    .deleteitembtn.def-button X
+                                        .confirmbox.hidden
+                                            .def-button.confirmdeletebtn(id=`${item._id}`) Delete 
+                                            .def-button Undo
+
+                        
+                #backbtn.def-button Back
+
+
+
             h2 Color
             #colorpicker.felt
 
@@ -25,38 +59,28 @@ block content
                     label(for=randomColor.color style=`background-color: ${randomColor.color}`).colorbtn= randomColor.name
 
 
-            //- #toppicker 
-            //- #frontpicker 
-
-            a(href='/catalog/item-creator') New Item
-
             h2 Items
             #itempicker.felt
-                each item, index in data.item_list
-                    
-                    if item.type = 'top'
-                        input(type="radio" id=`item${index}` name='topItem' value=item._id)
-                        label.itemicon(class=`${item.type}-item` for=`item${index}`)
-                            each layer in item.layers
-                                div.itemiconlayer(style=`background-color: ${layer.color}; clip-path: ${layer.clipPath}`)
-                            div.itemtype= `${item.type} item`
-
-                    else if item.type = 'front'
-                        input(type="radio" id=`item${index}` name='frontItem' value=item._id)
-                        label.itemicon(class=`${item.type}-item` for=`item${index}`)
-                            each layer in item.layers
-                                div.itemiconlayer(style=`background-color: ${layer.color}; clip-path: ${layer.clipPath}`)
-                            div.itemtype= `${item.type} item`
-
                 a#newitembtn(href='/catalog/item-creator')
                     div New Item
+
+                #allitemsbtn.def-button
+                    div All Items
+
+                each item, index in data.item_list
+                    if index <= 5
+
+                        input(type="radio" id=`item${index}` name=`${item.type}Item` value=JSON.stringify(item))
+                        label.itemicon(class=`${item.type}-item` for=`item${index}` foo=item._id)
+                            each layer in item.layers
+                                div.itemiconlayer(style=`background-color: ${layer.color}; clip-path: ${layer.clipPath}`)
+                            div.itemtype= `${item.type} item`
 
             h2 World
             #worldpicker.felt
                 each world in data.world_list
                     - var name = world.name
                     div
-
                         input(type="radio" id=name name='world' value=world required)
                         label(for=name).worldbtn= name
             button(type='submit').custom-button 

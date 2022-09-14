@@ -3,6 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var favicon = require('serve-favicon')
 
 const formData = require('express-form-data');
 const os = require("os");
@@ -34,6 +35,9 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
+
+// Set favicon.
+//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')))
 
 app.use(logger('dev'));
 app.use(express.json());

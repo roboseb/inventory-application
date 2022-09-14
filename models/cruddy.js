@@ -6,8 +6,8 @@ const CruddySchema = new Schema(
     {
         color: { type: String, required: true },
         world: [{ type: Object, ref: 'World' }],
-        itemTop: [],
-        itemFront: []
+        topItem: {type: String},
+        frontItem: {type: String}
     }
 );
 

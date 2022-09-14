@@ -1,5 +1,6 @@
 const Cruddy = require('../models/cruddy');
 const World = require('../models/world');
+const Item = require('../models/item');
 
 const async = require('async');
 const { body, validationResult } = require("express-validator");
@@ -15,10 +16,11 @@ exports.index = (req, res) => {
         world_list(callback) {
             World.find({}, callback); // Pass an empty object as match condition to find all documents of this collection
         },
+        item_list(callback) {
+            Item.find({}, callback); // Pass an empty object as match condition to find all documents of this collection
+        },
     },
         (err, results) => {
-
-            
             res.render('index', { title: 'Crudworld Home', error: err, data: results });
         });
 };
