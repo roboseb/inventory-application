@@ -19,9 +19,12 @@ exports.index = (req, res) => {
         item_list(callback) {
             Item.find({}, callback); // Pass an empty object as match condition to find all documents of this collection
         },
+        item_count(callback) {
+            Item.countDocuments({}, callback); // Pass an empty object as match condition to find all documents of this collection
+        },
     },
         (err, results) => {
-            res.render('index', { title: 'Crudworld Home', error: err, data: results });
+            res.render('index', { title: 'Crudworld', error: err, data: results });
         });
 };
 
@@ -45,7 +48,7 @@ exports.world_get = function (req, res, next) {
             return next(err);
         }
         // Successful, so render.
-        res.render('world', { title: 'A World', world: results.world, cruddy_list: results.cruddy_list});
+        res.render('world', { title: results.world.name, world: results.world, cruddy_list: results.cruddy_list});
     });
 
 };

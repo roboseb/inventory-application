@@ -10,11 +10,13 @@ html(lang='en')
         link(rel='stylesheet' href='/stylesheets/style.css')
     body
         div(class='maincontainer')
-            div#navbar Hello this is the navbar.
-                a(href='/') Home 
-                a(href='/catalog/creator') Creator
+            div#navbar.felt
+                a(href='/') Crudworld
+                #links
+                    a.def-button(href='/') Home 
+                    a.def-button(href='/catalog/creator') Creator
+                    a.def-button(href='/catalog/item-creator') New Item
 
-            div(class='main')
-                block content
+            block content
 
         script(src='/javascripts/script.js')

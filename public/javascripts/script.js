@@ -39,17 +39,6 @@ cruddies.forEach(cruddy => {
     });
 });
 
-//Toggle zooming into various worlds.
-const worlds = Array.from(document.querySelectorAll('.world-preview'));
-worlds.forEach(world => {
-    world.addEventListener('click', (e) => {
-        worlds.forEach(newWorld => {
-            newWorld.classList.remove('expanded');
-        });
-        world.classList.toggle('expanded');
-    });
-});
-
 // Add walking animation on walk button click.
 const walkButton = document.getElementById('walk');
 walkButton.addEventListener('click', () => {

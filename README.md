@@ -56,6 +56,14 @@ September 13th, 2022
 
     Spent the vast majority of the day finishing up all the item stuff. It works pretty well. I'm also gonna add some stuff to prevent deleting 'default' items, since they took so damn long to make.
 
+September 14th. 2022
+
+    Tried to get the favicon setup yesterday, but couldn't get it to work. Same as with my last node project. Should be able to get all the basic stuff that's left done today. Obviously had to cancel a lot of the ideas I had since I need to move on from this. Once I am done with Crudworld, I've only got three projects left in the node path of TOP, and after that it's just the getting hired section, which is pretty crazy to me. First time in my life I've properly followed through with a good idea I had.
+
+    So I commented out the line that adds the favicon, but I think it works just by having favicon.ico in the right folder, so it works fine now by accident.
+
+    Fuck, so in the zone today. Got a bunch of stuff working, and hopefully it will not take all day tomorrow to quickly finalize the home page and add a little mobile support.
+
 
 ---To-Do---
 
@@ -68,7 +76,7 @@ CANCEL-idle animations
 DONE-walking animations
 DONE-add hats and front accessories
 -counts for each world population
-CANCEL-latest cruddies section
+CANCEL?-latest cruddies section
 DONE-worlds can be overpopulated, starving cruddies
 CANCEL-different color cruddies have different traits.
 CANCEL-add cruddies breeding over time
@@ -77,11 +85,15 @@ CANCEL-click cruddy for random animation
 CANCEL-sort customizers by popularity
 -mobile support
 CANCEL-different bush counts based on world
--fix in-world delete UI
+DONE(REMOVED)-fix in-world delete UI
 DONE-dance machine score
 CANCEL-dancing skill based on colour
 CANCEL-some cruddies like dancing/eating more than others
 CANCEL-default shapes in item creator
--favicon
--better titles
+DONE-favicon
+DONE-better titles
 DONE-add my items to an undeletable list
+-style homepage
+-style navbar
+-style delete button
+-cruddy age/rarity 

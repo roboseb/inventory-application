@@ -2,7 +2,11 @@ mixin all_cruddies(data)
     
     div.crudbox
         each cruddy in data.cruddy_list
-            div.crud(topItem=cruddy.topItem frontItem=cruddy.frontItem)
+            - var roll = Math.floor(Math.random() * 5);
+            - var action = ''
+            - if (roll > 3) action = 'walking'
+            - else if (roll > 2) action = 'sitting'
+            div.crud(topItem=cruddy.topItem frontItem=cruddy.frontItem )
                 .crudfoot2
                 .crudfoot1
 

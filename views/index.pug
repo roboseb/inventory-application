@@ -1,24 +1,77 @@
 extends layout
 
-include world_previews
 include all_cruddies
 
 block content
-    h1= title
-    p Welcome to #[em Crudworld], a chaotic world in which everyone is omnipotent.
+    div#home
+        #home-info
 
-    h1 Dynamic content
+            #about 
+                #info.def-box.felt
+                    div 
+                        h2 #[e What is Crudworld?]
+                        p Are you fed up with total control over the #[span.tooltipped#games games] you play? Is there a deep desire #[span.tooltipped#burning burning] within you to have strangers on the internet decide the fates of your creations? If so, you might want to check in with your therapist, but before you do, explore the chaotic lands of #[span.tooltipped#crudworld1 Crudworld]
+                    div 
+                        h2 #[e I Still Don#[span.tooltipped#secret ']t Get It]
+                        p #[span.tooltipped#crudworld2 Crudworld] allows users to create their own cruddies, choosing their homes, colors and senses of fashion. Those who can count to #[span.tooltipped#hundred 100] might also enjoy creating new items to add to those available to everyone, but be warned, all can create and all can destroy!
+                #stats.def-box.felt
+                    if error
+                        p Oopsie poopsie (・3・) sowwwy... coudnt get stats
+                    else
+                        h3 Stats
 
-    if error
-        p Error getting dynamic content.
-    else
-        p Crudworld has the following record counts:
+                        .stat
+                            h4 Cruddies
+                            div= data.cruddy_count 
 
-        ul
-            li #[strong Cruddies:] !{data.cruddy_count}
+                        .stat 
+                            h4 Items 
+                            div= data.item_count
 
-    a(href="/catalog/creator") New Cruddy
+            #worlds.def-box.felt
+                if data.world_list.length > 1
+                    each world in data.world_list 
 
-    +all_cruddies(data)
+                        .worldbox 
+                            div.world-display
+                                                    
+                                - var pop = 0;
+                                each cruddy in data.cruddy_list
+                                    - if (world._id == JSON.parse(cruddy.world[0])._id) pop++;
+                                div= pop
+                                .world-display-side1
+                                .world-display-side2
+                                .world-display-top.felt
+                                    -var count = 0;
+                                    each cruddy in data.cruddy_list
+                                        - if (world._id == JSON.parse(cruddy.world[0])._id)
+                                            - count++;
+                                            if count < 2
+                                                div.crud
+                                                    .crudfoot2
+                                                    .crudfoot1
 
-    +world_previews(data)
+                                                    .crudfelt1
+                                                    .bod.crudbod1(style=`background-color: ${cruddy.color}`)
+                                                    .crudfelt2
+                                                    .bod.crudbod2(style=`background-color: ${cruddy.color}`)
+
+                                                    .eye1
+                                                    .eye2
+                                    
+
+                            .world-info
+                                div= world.name
+                                a(href=world.url) Go Here
+            
+
+
+
+
+
+        +all_cruddies(data)
+
+
+
+                    
+                    

@@ -14,13 +14,40 @@ body {
     font-family: wakuwaku, sans-serif;
 }
 
-.sidebar-nav {
-    margin-top: 20px;
-    padding: 0;
-    list-style: none;
+#navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 5px 20px;
+    background-color: var(--mint);
+    border-radius: 0px;
+
+    z-index: 1;
+}
+
+#navbar::after {
+    filter: opacity(0.4) brightness(1.5);
+    border-radius: 0px;
+}
+
+#navbar>a {
+    color: black;
+    font-size: 1.5rem;
+}
+
+#navbar #links {
+    display: flex;
+    gap: 10px;
+}
+
+#navbar a {
+    padding: 5px;
+    text-decoration: none;
 }
 
 .maincontainer {
+    box-sizing: border-box;
     height: 100vh;
     width: 100vw;
 
@@ -28,18 +55,8 @@ body {
 
     display: flex;
     flex-direction: column;
-}
 
-.main {
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
-
-    background-color: red;
-}
-
-.crudbox {
-    background-color: rgba(255, 0, 0, 0);
+    background-color: burlywood;
 }
 
 .crud {
@@ -452,11 +469,11 @@ body {
 
 .crud>form {
     position: absolute;
-    right: 0%;
+    left: 0%;
     top: 7%;
     z-index: 5;
 
-    transform: translate(100%, 0%);
+    transform: translate(-100%, 0%);
     background-color: rgb(132, 132, 255);
     padding: 10px;
 
@@ -475,45 +492,6 @@ body {
 
 .crud>form>button {
     border: none;
-}
-
-.world-previews {
-    flex-grow: 1;
-
-    background-color: white;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 15px;
-
-    padding: 15px;
-}
-
-.world-preview {
-
-    height: 10rem;
-    width: 10rem;
-
-    border-radius: 100%;
-    background-color: green;
-    color: white;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    transition: all 0.3s;
-}
-
-.world-preview.expanded {
-    height: 20rem;
-    width: 20rem;
-}
-
-.world-preview.minimized {
-    height: 10rem;
-    width: 10rem;
 }
 
 #world {
@@ -1490,4 +1468,272 @@ body {
 #creator input:checked+label>.deleteitembtn {
     filter: opacity(1);
     pointer-events: all;
+}
+
+#home {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    width: 100vw;
+    flex-grow: 1;
+
+    overflow: hidden;
+    position: relative;
+
+    background-color: var(--crimson);
+}
+
+#home-info {
+    background-color: rgba(0, 0, 255, 0);
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+
+    gap: 20px;
+    padding: 20px;
+
+    flex-grow: 1;
+    
+}
+
+#home-info>#about {
+    display: flex;
+
+    gap: 20px;
+    max-width: 900px;
+}
+
+#home-info>#about>#info {
+    background-color: white;
+
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+#home-info>#about>#info p {
+    margin: 0;
+}
+
+#home-info>#about>#stats {
+    background-color: white;
+    
+}
+
+#home-info>#about>#stats .stat {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end; 
+}
+
+#home-info>#about>#stats .stat>div {
+    font-size: 5rem;
+}
+
+#home-info>#about>#stats h3 {
+    text-align: right;
+}
+
+#home-info>#about>#stats h4 {
+    font-size: 2rem;
+    color: var(--crimson);
+}
+
+#home-info>#worlds {
+    background-color: white;
+    max-width: 900px;
+
+    width: 100%;
+
+    display: flex;
+    justify-content: space-between;
+}
+
+.worldbox {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.world-display {
+    background-color: var(--mint);
+
+    height: 10rem;
+    width: 10rem;
+
+    position: relative;
+}
+
+.world-display-top {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    height: 100%;
+    width: 100%;
+
+    border-radius: 100%;
+    background-color: red;
+
+    transform: rotateX(70deg);
+    filter: initial;
+
+    animation: worldspin 2s infinite linear;
+}
+
+.world-display-top::after {
+    border-radius: 100%;
+}
+
+@keyframes worldspin {
+    from {transform: rotateX(70deg) rotate(0deg)}
+    to {transform: rotateX(70deg) rotateZ(360deg)}
+}
+
+.world-display-side1 {
+    position: absolute;
+    top: 15%;
+    left: 0;
+
+    height: 100%;
+    width: 100%;
+
+    border-radius: 100%;
+    background-color: rgb(47, 47, 47);
+
+    transform: rotateX(70deg);
+}
+
+.world-display-side2 {
+    position: absolute;
+    top: 40%;
+    left: 0;
+
+    height: 17%;
+    width: 100%;
+    transform: translateY(50%);
+    background-color: rgb(47, 47, 47);
+}
+
+.world-display-top>.crud {
+    position: absolute;
+    top: 0%;
+    left: 0%;
+
+    height: 60%;
+    width: 60%;
+
+    transform: rotate(0deg) scaleX(0.5) translate(-0%, -0%);
+
+    transform-origin: center;
+
+    animation: crudspin 2s infinite linear;
+}
+
+.world-display-top>.crud:nth-child(2) {
+    transform: rotate(0deg) scaleX(0.5) translate(-0%, -45%);
+}
+
+@keyframes crudspin {
+    0% {transform: rotate(0deg) scaleX(0.5) translate(0%, -45%)}
+    50% {transform: rotate(-180deg) scaleX(-0.5) translate(0%, -45%)}
+    100% {transform: rotate(-360deg) scaleX(0.5) translate(0%, -45%)}
+}
+
+.world-display-top>.crud>.eye1, .world-display-top>.crud>.eye2 {
+    animation: eyespin 2s infinite linear;
+}
+
+@keyframes eyespin {
+    0% {filter: opacity(0)}
+    50% {filter: opacity(1)}
+    100% {filter: opacity(0)}
+}
+
+#home-info .def-box {
+    border-radius: 10px;
+    padding: 10px;
+}
+
+#home-info .def-box::after {
+    filter: opacity(0.3);
+    border-radius: 10px;
+}
+
+.crudbox {
+    box-sizing: border-box;
+    padding: 20px;
+
+    height: 100%;
+    background-color: rgba(8, 50, 189, 0.185);
+
+    flex-grow: 1;
+}
+
+.crudbox>.crud {
+    height: 10rem;
+    width: 10rem;
+    margin-bottom: 20px;;
+}
+
+.tooltipped {
+    color: var(--crimson);
+    position: relative;
+}
+
+.tooltipped::after {
+    content: 'placeholder';
+
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -120%);
+
+    filter: opacity(0);
+    transition: all 0.2s;
+
+    background-color: black;
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+    pointer-events: none;
+}
+
+.tooltipped:hover::after {
+    filter: opacity(1);
+    transform: translate(-50%, -100%);
+    pointer-events: all;
+}
+
+.tooltipped#games::after {
+    content: "Unless you play League, in which case you're set!";
+    width: 500%;
+}
+
+.tooltipped#burning::after {
+    content: "Speak with your doctor today!";
+    width: 200%;
+}
+
+.tooltipped#crudworld1::after {
+    content: "In databases, CRUD stands for Create, Read, Update, and Delete, which is exactly what Crudworld does. Through the magic of Node.js, Express, MongoDB, Mongoose, Pug, express-form-data, express-validator, async, and over 40 hours of blood, sweat, and tears, Crudworld allows you to Create cruddies, Read their information, Use the power of creating items to update the database, and Delete both cruddies and items, all with the support of run-on sentences!  Seriously, this project got way bigger than I expected it to, at a ridiculous rate. There's even a pretty extensive list of features that were cut, probably more than features that I was actually able to implement. Here are some examples; Named cruddies. Custom worlds. Idle animations. Unique traits based on cruddy color. Cruddy breeding. Day/night cycle. Cruddy animations on click. Sorted item. Unique worlds. Default shapes in the item creator. Of all the projects I've done, this is probably the one I'd most like to expand into something bigger. Custom cruddy girth.";
+    width: 950%;
+}
+
+.tooltipped#crudworld2::after {
+    content: "I'm not repeating myself, go read the other tooltip.";
+    width: 200%;
+}
+
+.tooltipped#hundred::after {
+    content: "The item creator has a moderate learning curve even though it's so limited. Still, using Bennett Feely's clippy app, you can do quite a bit with clip-paths and 5 layers. All the default items were made in the item creator, and even those are relatively simple.";
+    width: 800%;
+}
+
+.tooltipped#secret::after {
+    content: "This site is technically my inventory app project for the Odin Project. That project's outline is essentially to create a simple database, like one you'd see for a storefront or store's inventory. Look at the monster I've created.";
+    width: 2000%;
+    font-size: 1rem;
 }

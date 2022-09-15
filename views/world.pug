@@ -38,15 +38,6 @@ block content
                         .bubble.playing 🕺
                         .bubble.score 123
 
-
-                        form(method='POST' action='').deletebox 
-                            div= JSON.parse(cruddy.world[0]).name
-
-                            label(for=cruddy._id ).colorbtn= cruddy._id
-                            input(type="checkbox" id=cruddy._id name='id' value=cruddy._id required)
-
-
-                            button(type='submit') Delete
             each val in [1, 2, 3]
                 .bush.stacked(id=`bush${val}`)
                     .bushshadow
