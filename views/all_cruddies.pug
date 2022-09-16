@@ -6,7 +6,7 @@ mixin all_cruddies(data)
             - var action = ''
             - if (roll > 3) action = 'walking'
             - else if (roll > 2) action = 'sitting'
-            div.crud(topItem=cruddy.topItem frontItem=cruddy.frontItem )
+            div.crud.scroller(topItem=cruddy.topItem frontItem=cruddy.frontItem id=cruddy._id)
                 .crudfoot2
                 .crudfoot1
 
@@ -28,12 +28,17 @@ mixin all_cruddies(data)
                         each layer in JSON.parse(cruddy.frontItem).layers
                             .item.felt(style=`background-color: ${layer.color}; clip-path: ${layer.clipPath}`)
 
-                form(method='POST' action='').deletebox 
+                //- form(method='POST' action='').deletebox 
 
-                    div= JSON.parse(cruddy.world[0]).name
+                //-     div= JSON.parse(cruddy.world[0]).name
 
-                    label(for=cruddy._id ).colorbtn= cruddy._id
-                    input(type="checkbox" id=cruddy._id name='id' value=cruddy._id required)
+                //-     label(for=cruddy._id ).colorbtn= cruddy._id
+                //-     input(type="checkbox" id=cruddy._id name='id' value=cruddy._id required)
 
 
-                    button(type='submit') Delete
+                //-     button(type='submit') Delete
+
+                .killbox
+                    button.kill-btn.def-button 🗡️
+
+    script(src='/javascripts/cruddy-scroll.js')

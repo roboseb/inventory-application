@@ -9,6 +9,83 @@
     src: url('../fonts/mini-wakuwaku.otf');
 }
 
+@media only screen and (max-width: 500px) {
+    .maincontainer>#creator>#cruddisplay {
+        padding-bottom: 20px;
+    }
+
+    .maincontainer>#creator>#optionsbox {
+        padding-top: 75px;
+        padding-bottom: 20px;
+    }
+
+    .maincontainer>#creator>#optionsbox>#allitems {
+        margin-top: 20px;
+    }
+
+    .maincontainer>#creator {
+        flex-direction: column-reverse;
+        overflow: scroll;
+    }
+
+    .maincontainer>#navbar {
+        padding: 5px;
+    }
+
+    .maincontainer>#navbar>#links>#homebtn {
+        display: none;
+    }
+
+    .maincontainer>#home {
+        flex-direction: column-reverse;
+        overflow: scroll;
+
+        width: 100vw;
+    }
+
+    .maincontainer>#home>#home-info {
+        width: 100%;
+        flex-grow: initial;
+        flex-direction: column-reverse;
+
+        max-width: 100vw;
+    }
+
+
+    .maincontainer>#home>#home-info>#about {
+        flex-direction: column;
+        max-width: 100vw;
+    }
+
+    /* Remove all tooltips */
+    .maincontainer>#home>#home-info>#about span::after {
+        display: none;
+    }
+
+    .maincontainer>#home>#home-info>#worlds {
+        flex-direction: column;
+    }
+
+    .maincontainer>#home>#home-info>#worlds .worldbox-main {
+        align-items: flex-start;
+    }
+
+    .maincontainer>#home>.crudbox {
+        padding: 100vw 20px 0px 20px;
+        flex-grow: initial;
+        transform: rotate(90deg);
+
+        max-width: 100vw;
+        max-height: 100vw;
+    }
+
+    .maincontainer>#home>.crudbox>.crud {
+        width: 90vw;
+        height: 90vw;
+        transform: rotate(-90deg);
+    }
+}
+
 body {
     margin: 0;
     font-family: wakuwaku, sans-serif;
@@ -24,6 +101,7 @@ body {
     border-radius: 0px;
 
     z-index: 1;
+    width: 100vw;
 }
 
 #navbar::after {
@@ -281,7 +359,7 @@ body {
     justify-content: center;
     align-items: center;
 
-    
+
 }
 
 #cruddisplay>.crud {
@@ -317,6 +395,10 @@ body {
 #cruddisplay>#anipicker>button:hover, #itemboxtoggle:hover, #clip-path>button:hover, .def-button:hover {
     background-color: #eba3b5;
     color: black;
+}
+
+#itemboxtoggle {
+    margin-top: 20px;
 }
 
 #creator h2 {
@@ -467,33 +549,6 @@ body {
     width: 8rem;
 }
 
-.crud>form {
-    position: absolute;
-    left: 0%;
-    top: 7%;
-    z-index: 5;
-
-    transform: translate(-100%, 0%);
-    background-color: rgb(132, 132, 255);
-    padding: 10px;
-
-    filter: drop-shadow(0px 0px 2px black) opacity(0);
-    transition: all 0.2s;
-    pointer-events: none;
-}
-
-.crud>form.visible {
-    filter: drop-shadow(0px 0px 2px black) opacity(1);
-}
-
-.crud>form.visible>button, .crud>form.visible>input, .crud>form a {
-    pointer-events: all;
-}
-
-.crud>form>button {
-    border: none;
-}
-
 #world {
     height: 100%;
     width: 100%;
@@ -504,6 +559,10 @@ body {
 #sky {
     height: 50%;
     background-color: skyblue;
+}
+
+#sky>h2 {
+    padding: 20px;
 }
 
 #ground {
@@ -813,9 +872,17 @@ body {
 }
 
 @keyframes berrygen {
-    0% {transform: scale(0.1);}
-    50% {transform: scale(1) rotate(40deg);}
-    100% {transform: scale(1) rotate(0deg);}
+    0% {
+        transform: scale(0.1);
+    }
+
+    50% {
+        transform: scale(1) rotate(40deg);
+    }
+
+    100% {
+        transform: scale(1) rotate(0deg);
+    }
 }
 
 #bush1 {
@@ -841,7 +908,7 @@ body {
 
     width: 70%;
     height: 50%;
-    
+
     align-items: center;
     justify-content: center;
     text-align: center;
@@ -868,7 +935,7 @@ body {
     filter: opacity(1);
 }
 
-.crud.scoring > .bubble.score {
+.crud.scoring>.bubble.score {
     transform: translate(0%, -100%) scaleX(-1);
     font-size: 2rem;
     filter: opacity(1);
@@ -919,20 +986,36 @@ body {
 }
 
 @keyframes deadcrud {
-    0% {transform: rotateX(0deg) rotateZ(0deg) translateZ(0px) translateX(0px);}
-    100% {transform: rotateX(70deg) rotateZ(70deg) translateZ(-100px) translateX(100px);}
+    0% {
+        transform: rotateX(0deg) rotateZ(0deg) translateZ(0px) translateX(0px);
+    }
+
+    100% {
+        transform: rotateX(70deg) rotateZ(70deg) translateZ(-100px) translateX(100px);
+    }
 }
 
 .crud.dead>.eye1, .crud.dead>.eye2 {
     animation: deadcrudeye 2s;
-    transform: scaleX(2); 
+    transform: scaleX(2);
     clip-path: polygon(20% 0%, 0% 20%, 30% 50%, 0% 80%, 20% 100%, 50% 70%, 80% 100%, 100% 80%, 70% 50%, 100% 20%, 80% 0%, 50% 30%);
 }
 
 @keyframes deadcrudeye {
-    0% {transform: scaleX(1); clip-path: polygon(0 0, 0% 20%, 0 50%, 0 100%, 20% 100%, 49% 100%, 80% 100%, 100% 100%, 100% 50%, 100% 20%, 100% 0, 51% 0);}
-    50% {transform: scaleX(2); clip-path: polygon(20% 0%, 0% 20%, 30% 50%, 0% 80%, 20% 100%, 50% 70%, 80% 100%, 100% 80%, 70% 50%, 100% 20%, 80% 0%, 50% 30%);}
-    100% {transform: scaleX(2); clip-path: polygon(20% 0%, 0% 20%, 30% 50%, 0% 80%, 20% 100%, 50% 70%, 80% 100%, 100% 80%, 70% 50%, 100% 20%, 80% 0%, 50% 30%);}
+    0% {
+        transform: scaleX(1);
+        clip-path: polygon(0 0, 0% 20%, 0 50%, 0 100%, 20% 100%, 49% 100%, 80% 100%, 100% 100%, 100% 50%, 100% 20%, 100% 0, 51% 0);
+    }
+
+    50% {
+        transform: scaleX(2);
+        clip-path: polygon(20% 0%, 0% 20%, 30% 50%, 0% 80%, 20% 100%, 50% 70%, 80% 100%, 100% 80%, 70% 50%, 100% 20%, 80% 0%, 50% 30%);
+    }
+
+    100% {
+        transform: scaleX(2);
+        clip-path: polygon(20% 0%, 0% 20%, 30% 50%, 0% 80%, 20% 100%, 50% 70%, 80% 100%, 100% 80%, 70% 50%, 100% 20%, 80% 0%, 50% 30%);
+    }
 }
 
 .crud.dead>.crudfelt1 {
@@ -941,8 +1024,13 @@ body {
 }
 
 @keyframes deadcrudfelt1 {
-    0% {filter: brightness(2) contrast(1.5) drop-shadow(0px 10px 0px rgb(42, 42, 42));}
-    100% {filter: brightness(2) contrast(1.5) drop-shadow(30px 10px 0px rgb(42, 42, 42));}
+    0% {
+        filter: brightness(2) contrast(1.5) drop-shadow(0px 10px 0px rgb(42, 42, 42));
+    }
+
+    100% {
+        filter: brightness(2) contrast(1.5) drop-shadow(30px 10px 0px rgb(42, 42, 42));
+    }
 }
 
 .crud.dead>.crudfelt2 {
@@ -951,8 +1039,13 @@ body {
 }
 
 @keyframes deadcrudfelt2 {
-    0% {filter: brightness(2) contrast(1.5) drop-shadow(0px 10px 0px rgb(42, 42, 42));}
-    100% {filter: brightness(2) contrast(1.5) drop-shadow(30px 15px 0px rgb(42, 42, 42));}
+    0% {
+        filter: brightness(2) contrast(1.5) drop-shadow(0px 10px 0px rgb(42, 42, 42));
+    }
+
+    100% {
+        filter: brightness(2) contrast(1.5) drop-shadow(30px 15px 0px rgb(42, 42, 42));
+    }
 }
 
 .crud.dead>.crudfoot1, .crud.dead>.crudfoot2 {
@@ -961,8 +1054,13 @@ body {
 }
 
 @keyframes deadcrudfoot {
-    0% {filter: drop-shadow(0px 10px 0px rgb(42, 42, 42));}
-    100% {filter: drop-shadow(30px 10px 0px rgb(42, 42, 42));}
+    0% {
+        filter: drop-shadow(0px 10px 0px rgb(42, 42, 42));
+    }
+
+    100% {
+        filter: drop-shadow(30px 10px 0px rgb(42, 42, 42));
+    }
 }
 
 #dancemachine {
@@ -983,11 +1081,16 @@ body {
 
 #dancemachine.running:after {
     animation: scroll 4s infinite linear;
-} 
+}
 
 @keyframes scroll {
-    from {background-position: 0% 0%;}
-    to {background-position: 0% -100%;}
+    from {
+        background-position: 0% 0%;
+    }
+
+    to {
+        background-position: 0% -100%;
+    }
 }
 
 #dancemachine>#side {
@@ -1005,6 +1108,7 @@ body {
     transform: scaleX(0.7);
     transform-origin: left;
 }
+
 #dancemachine>#side>.roller {
     position: relative;
 
@@ -1022,8 +1126,13 @@ body {
 }
 
 @keyframes rolling {
-    from {transform: rotate(0deg)}
-    to {transform: rotate(360deg)}
+    from {
+        transform: rotate(0deg)
+    }
+
+    to {
+        transform: rotate(360deg)
+    }
 }
 
 #dancemachine>#side>.roller:after {
@@ -1134,7 +1243,10 @@ body {
 
 @keyframes scrollboard {
     from {}
-    to {transform: translateY(100%);}
+
+    to {
+        transform: translateY(100%);
+    }
 }
 
 #dancemachine .move {
@@ -1191,8 +1303,13 @@ body {
 }
 
 @keyframes rightmove {
-    from {background-color: rgba(255, 255, 255, 0.383);}
-    to {background-color: rgba(0, 255, 21, 0.383);}
+    from {
+        background-color: rgba(255, 255, 255, 0.383);
+    }
+
+    to {
+        background-color: rgba(0, 255, 21, 0.383);
+    }
 }
 
 #boardbox>#bottom.wrong {
@@ -1200,8 +1317,13 @@ body {
 }
 
 @keyframes wrongmove {
-    from {background-color: rgba(255, 255, 255, 0.383);}
-    to {background-color: rgba(255, 0, 0, 0.383);}
+    from {
+        background-color: rgba(255, 255, 255, 0.383);
+    }
+
+    to {
+        background-color: rgba(255, 0, 0, 0.383);
+    }
 }
 
 .crud.danceleft>.crudfoot2 {
@@ -1209,20 +1331,36 @@ body {
 }
 
 @keyframes cruddanceleft {
-    0% {transform: translate(0%, 0%);}
-    50% {transform: translate(10%, -10%) rotate(-0deg);}
-    100% {transform: translate(0%, 0%);}
-} 
+    0% {
+        transform: translate(0%, 0%);
+    }
+
+    50% {
+        transform: translate(10%, -10%) rotate(-0deg);
+    }
+
+    100% {
+        transform: translate(0%, 0%);
+    }
+}
 
 .crud.danceright>.crudfoot1 {
     animation: cruddanceright 0.2s infinite cubic-bezier(0.6, -0.28, 0.74, 0.05);
 }
 
 @keyframes cruddanceright {
-    0% {transform: translate(0%, 0%);}
-    50% {transform: translate(-10%, -20%) rotate(5deg);}
-    100% {transform: translate(0%, 0%);}
-} 
+    0% {
+        transform: translate(0%, 0%);
+    }
+
+    50% {
+        transform: translate(-10%, -20%) rotate(5deg);
+    }
+
+    100% {
+        transform: translate(0%, 0%);
+    }
+}
 
 .crud .top-item-box {
     position: absolute;
@@ -1410,7 +1548,7 @@ body {
     color: white;
     max-height: 100%;
     width: calc(100% - 60px);
-    
+
     transition: all 0.3s;
 }
 
@@ -1495,7 +1633,7 @@ body {
     padding: 20px;
 
     flex-grow: 1;
-    
+
 }
 
 #home-info>#about {
@@ -1519,13 +1657,13 @@ body {
 
 #home-info>#about>#stats {
     background-color: white;
-    
+
 }
 
 #home-info>#about>#stats .stat {
     display: flex;
     flex-direction: column;
-    align-items: flex-end; 
+    align-items: flex-end;
 }
 
 #home-info>#about>#stats .stat>div {
@@ -1542,26 +1680,63 @@ body {
 }
 
 #home-info>#worlds {
-    background-color: white;
     max-width: 900px;
-
     width: 100%;
 
     display: flex;
     justify-content: space-between;
-}
-
-.worldbox {
-    display: flex;
-    flex-direction: column;
     gap: 20px;
 }
 
-.world-display {
-    background-color: var(--mint);
+.worldbox {
+    flex-grow: 1;
+    display: flex;
+    justify-content: space-between;
+    gap: 0px;
 
+    background-color: white;
+
+    padding: 10px 0px 10px 10px !important;
+}
+
+.worldbox>h2 {
+    font-size: 1.5rem;
+    margin: 0;
+}
+
+.worldbox-main {
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.pop-count {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 20%;
+    position: relative;
+}
+
+.pop-count>div {
+    font-size: 1.8rem;
+    white-space: nowrap;
+    color: rgb(54, 54, 54);
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(90deg);
+}
+
+.world-display {
     height: 10rem;
     width: 10rem;
+    margin: -20px 0px;
 
     position: relative;
 }
@@ -1575,7 +1750,7 @@ body {
     width: 100%;
 
     border-radius: 100%;
-    background-color: red;
+    background-color: var(--deep-green);
 
     transform: rotateX(70deg);
     filter: initial;
@@ -1588,8 +1763,13 @@ body {
 }
 
 @keyframes worldspin {
-    from {transform: rotateX(70deg) rotate(0deg)}
-    to {transform: rotateX(70deg) rotateZ(360deg)}
+    from {
+        transform: rotateX(70deg) rotate(0deg)
+    }
+
+    to {
+        transform: rotateX(70deg) rotateZ(360deg)
+    }
 }
 
 .world-display-side1 {
@@ -1637,19 +1817,39 @@ body {
 }
 
 @keyframes crudspin {
-    0% {transform: rotate(0deg) scaleX(0.5) translate(0%, -45%)}
-    50% {transform: rotate(-180deg) scaleX(-0.5) translate(0%, -45%)}
-    100% {transform: rotate(-360deg) scaleX(0.5) translate(0%, -45%)}
+    0% {
+        transform: rotate(0deg) scaleX(0.5) translate(0%, -45%)
+    }
+
+    50% {
+        transform: rotate(-180deg) scaleX(-0.5) translate(0%, -45%)
+    }
+
+    100% {
+        transform: rotate(-360deg) scaleX(0.5) translate(0%, -45%)
+    }
 }
 
 .world-display-top>.crud>.eye1, .world-display-top>.crud>.eye2 {
     animation: eyespin 2s infinite linear;
 }
 
+.world-display-top>.crud>.front-item-box {
+    animation: eyespin 2s infinite linear;
+}
+
 @keyframes eyespin {
-    0% {filter: opacity(0)}
-    50% {filter: opacity(1)}
-    100% {filter: opacity(0)}
+    0% {
+        filter: opacity(0)
+    }
+
+    50% {
+        filter: opacity(1)
+    }
+
+    100% {
+        filter: opacity(0)
+    }
 }
 
 #home-info .def-box {
@@ -1665,17 +1865,25 @@ body {
 .crudbox {
     box-sizing: border-box;
     padding: 20px;
-
     height: 100%;
-    background-color: rgba(8, 50, 189, 0.185);
 
     flex-grow: 1;
+    overflow-y: scroll;
+}
+
+.crudbox::-webkit-scrollbar {
+    display: none;
+}
+
+.crudbox {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 }
 
 .crudbox>.crud {
     height: 10rem;
     width: 10rem;
-    margin-bottom: 20px;;
+    margin-bottom: 20px;
 }
 
 .tooltipped {
@@ -1736,4 +1944,27 @@ body {
     content: "This site is technically my inventory app project for the Odin Project. That project's outline is essentially to create a simple database, like one you'd see for a storefront or store's inventory. Look at the monster I've created.";
     width: 2000%;
     font-size: 1rem;
+}
+
+.killbox {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 5;
+
+    transform: translate(-50%, -50%);
+    font-size: 3rem;
+
+    filter: opacity(0);
+
+    transition: all 0.2s;
+    pointer-events: none;
+}
+
+.crud>.killbox.visible {
+    filter: opacity(1);
+}
+
+.crud>.killbox.visible>button {
+    pointer-events: all;
 }

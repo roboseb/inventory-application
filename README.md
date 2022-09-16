@@ -2,6 +2,32 @@
 
 Inventory application project for the Odin Project.
 
+---Features---
+
+- Based on a project outline for an inventory app, Crudworld is a small simulation where you can both create and kill!
+
+- Built on Node.js with express, as well as MongoDB and mongoose for the connected database
+
+- Full mobile and desktop responsive layouts for all pages.
+
+- Create your own cruddy! Choose its colour, home, and accessories.
+
+- Create your own items! With a built-in vector-based item creator, make your own items with up to five seperate layers, which can they be used or deleted by anyone on the site!
+
+- Cool stats like world populations, total population and item counts!
+
+- Watch cruddies live out their lives in three worlds
+
+- If cruddies can't find food, they will die, and immediately be removed from the database!
+
+- Rare colours in the creator!
+
+- Cruddies like to play on the dance machine in their downtime
+
+- An absolutely absurd amount of animations. Seriously, I usually point these out since they can take a lot of time, but this project has almost 2000 lines of CSS, all in one file. Probably could've split that up.
+
+- Murder cruddies on the home screen and watch them be deleted forever!
+
 ---Devlog---
 
 September 5th, 2022
@@ -64,6 +90,14 @@ September 14th. 2022
 
     Fuck, so in the zone today. Got a bunch of stuff working, and hopefully it will not take all day tomorrow to quickly finalize the home page and add a little mobile support.
 
+September 15th, 2022
+
+    Alright, last day, I promise. Just need to finish up the home page and add some better mobile support. Basically all styling.
+
+    Homepage is done, and the scrolling cruddies look pretty cool. Kinda wanted them to scroll linearly, but I think I would've had to build it with transform for that to work, which I obviously don't have time for. Not when I still have to get the bitch working for mobile.
+
+    A lot of the mobile transition was actually pretty easy. However, getting the fucking scrolly boys on the homepage to even sort of work was a nightmare. Other than that, just need to push this bitch and do the final touches before deploying, then I can finally go on yet again.
+
 
 ---To-Do---
 
@@ -75,7 +109,7 @@ DONE-random color options in creator
 CANCEL-idle animations
 DONE-walking animations
 DONE-add hats and front accessories
--counts for each world population
+DONE-counts for each world population
 CANCEL?-latest cruddies section
 DONE-worlds can be overpopulated, starving cruddies
 CANCEL-different color cruddies have different traits.
@@ -83,7 +117,7 @@ CANCEL-add cruddies breeding over time
 CANCEL-day/night + shadows?
 CANCEL-click cruddy for random animation
 CANCEL-sort customizers by popularity
--mobile support
+DONE-mobile support
 CANCEL-different bush counts based on world
 DONE(REMOVED)-fix in-world delete UI
 DONE-dance machine score
@@ -93,7 +127,7 @@ CANCEL-default shapes in item creator
 DONE-favicon
 DONE-better titles
 DONE-add my items to an undeletable list
--style homepage
--style navbar
--style delete button
--cruddy age/rarity 
+DONE-style homepage
+DONE-style navbar
+DONE-style delete button
+CANCEL-cruddy age/rarity 

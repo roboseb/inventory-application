@@ -28,42 +28,56 @@ block content
                             h4 Items 
                             div= data.item_count
 
-            #worlds.def-box.felt
+            #worlds
                 if data.world_list.length > 1
                     each world in data.world_list 
 
-                        .worldbox 
-                            div.world-display
-                                                    
+                        .worldbox.felt.def-box
+                            .worldbox-main
+
                                 - var pop = 0;
                                 each cruddy in data.cruddy_list
                                     - if (world._id == JSON.parse(cruddy.world[0])._id) pop++;
-                                div= pop
-                                .world-display-side1
-                                .world-display-side2
-                                .world-display-top.felt
-                                    -var count = 0;
-                                    each cruddy in data.cruddy_list
-                                        - if (world._id == JSON.parse(cruddy.world[0])._id)
-                                            - count++;
-                                            if count < 2
-                                                div.crud
-                                                    .crudfoot2
-                                                    .crudfoot1
+                                h2= world.name
+                                div.world-display
+                                                        
 
-                                                    .crudfelt1
-                                                    .bod.crudbod1(style=`background-color: ${cruddy.color}`)
-                                                    .crudfelt2
-                                                    .bod.crudbod2(style=`background-color: ${cruddy.color}`)
+                                    .world-display-side1
+                                    .world-display-side2
+                                    .world-display-top.felt
+                                        -var count = 0;
+                                        each cruddy in data.cruddy_list
+                                            - if (world._id == JSON.parse(cruddy.world[0])._id)
+                                                - count++;
+                                                if count < 2
+                                                    div.crud(id=cruddy.id)
+                                                        .crudfoot2
+                                                        .crudfoot1
 
-                                                    .eye1
-                                                    .eye2
-                                    
+                                                        .crudfelt1
+                                                        .bod.crudbod1(style=`background-color: ${cruddy.color}`)
+                                                        .crudfelt2
+                                                        .bod.crudbod2(style=`background-color: ${cruddy.color}`)
 
-                            .world-info
-                                div= world.name
-                                a(href=world.url) Go Here
-            
+                                                        .eye1
+                                                        .eye2
+
+                                                        .top-item-box.item-box.hidden
+                                                            if cruddy.topItem
+                                                                each layer in JSON.parse(cruddy.topItem).layers
+                                                                    .item.felt(style=`background-color: ${layer.color}; clip-path: ${layer.clipPath}`)
+
+                                                        .front-item-box.item-box.hidden
+                                                            if cruddy.frontItem
+                                                                each layer in JSON.parse(cruddy.frontItem).layers
+                                                                    .item.felt(style=`background-color: ${layer.color}; clip-path: ${layer.clipPath}`)
+                                        
+
+                                
+                                a.def-button(href=world.url style='text-decoration: none') Go Here
+                            .pop-count
+                                div= `Population: ${pop}`
+
 
 
 
