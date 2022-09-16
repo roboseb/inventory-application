@@ -16,6 +16,8 @@ const options = {
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 const catalogRouter = require('./routes/catalog');
+const compression = require("compression");
+const helmet = require("helmet");
 
 var app = express();
 
@@ -23,7 +25,9 @@ var app = express();
 const mongoose = require('mongoose');
 
 //Set up default mongoose connection
-const mongoDB = 'mongodb+srv://crud:crudworld@inventory-application.j11kxg3.mongodb.net/?retryWrites=true&w=majority';
+const dev_db_url =
+'mongodb+srv://crud:crudworld@inventory-application.j11kxg3.mongodb.net/?retryWrites=true&w=majority';
+const mongoDB = process.env.MONGODB_URI || dev_db_url;
 mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true });
 
 //Get the default connection
@@ -45,6 +49,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(formData.parse(options));
+app.use(compression()); // Compress all routes
+app.use(helmet());
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
